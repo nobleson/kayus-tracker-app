@@ -1,0 +1,48 @@
+{
+  "name": "kayus-tracker-app",
+  "version": "1.0.0",
+  "description": "Tracking and logging of call quality of different telecom networks.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "calls"
+  ],
+  "author": "Luke Ityav",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "basic-auth-connect": "^1.0.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.3",
+    "chalk": "^2.4.2",
+    "child_process": "^1.0.2",
+    "chokidar": "^3.4.0",
+    "config": "^3.0.1",
+    "connect-ensure-login": "^0.1.1",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^3.2.0",
+    "cookie-parser": "^1.4.4",
+    "cron": "^1.7.0",
+    "dateformat": "^3.0.3",
+    "dotenv": "^8.2.0",
+    "ejs": "^2.6.1",
+    "express": "^4.17.1",
+    "express-session": "^1.15.6",
+    "flash": "^1.1.0",
+    "lodash": ">=4.17.13",
+    "m3u": "0.0.2",
+    "mkdirp": "1.0.3",
+    "mongoose": "^5.4.18",
+    "passport": "^0.4.1",
+    "request": "^2.88.0",
+    "shortid": "^2.2.14"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "file-loader": "^3.0.1",
+    "supervisor": "^0.12.0",
+    "url-loader": "^1.1.2"
+  }
+}

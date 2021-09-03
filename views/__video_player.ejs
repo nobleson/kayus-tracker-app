@@ -1,0 +1,64 @@
+<link href="/css/video-js.css" rel="stylesheet">
+<link href="/css/videojs-resolution-switcher.css" rel="stylesheet">
+<style>
+#player_wraper{
+    margin-bottom: 20px;
+}
+</style>
+<div class="streams row">
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8 mx-auto mt-5" id="player_wraper">
+
+    </div>
+</div>
+<script src="/js/core/jquery.min.js"></script>
+<script src="/js/plugins/video.js"></script>
+<script src="/js/plugins/videojs-resolution-switcher.js"></script>
+<script src="/js/plugins/axios.min.js"></script>
+<script src="/js/custom/VideoPlayer.js"></script>
+
+<script>
+   const pathArray = window.location.pathname.split("/")
+   $("#player_wraper").text("Loading...")
+   let player = null
+   async function componentDidMount() {
+        await VideoPlayer.getUser(pathArray[2]).then( res => {
+            if(res.data){
+                const node_media_server_url = `/live/${res.data.stream_key}/index.m3u8`
+                console.log("node_media_server_url",node_media_server_url)
+                $("#player_wraper").html(`<div data-vjs-player>
+                                        <video id="vid1" class="video-js  vjs-default-skin vjs-big-play-centered">
+                                            
+                                        </video>
+                                    </div>`) 
+                const  videoJsOptions = {
+                    autoplay: false,
+                    controls: true,
+                    width: 1000,
+                    sources: [{
+                        src: `${node_media_server_url}`,
+                        type: 'application/x-mpegURL'
+                    }],
+                    poster: `/thumbnails/${res.data.stream_key}.png`,
+                    fluid: true,
+                }
+
+
+               videojs("vid1", videoJsOptions, function onPlayerReady() {
+                    player = this;
+                   // window.player = player
+                        console.log('onPlayerReady', this)
+                    });
+
+            }
+   
+        })
+    }
+    $(document).ready(function(){
+        componentDidMount().then( ()=>{
+/*             if (player) {
+                  player.dispose()
+              } */
+        })
+
+    })
+</script>

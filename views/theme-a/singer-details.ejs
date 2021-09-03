@@ -1,0 +1,702 @@
+<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+  <head>
+    <meta charset="UTF-8">
+    <meta property="fb:app_id" content="253469682980920" />
+    <meta property="og:url"  content="$OG_URL" />
+    <meta property="og:type" content="video.movie" />
+    <meta property="og:image:width" content="450"/>
+    <meta property="og:image:height" content="398"/>
+    <meta property="og:title" content="$OG_TITLE"/>
+    <meta property="og:description" content="$OG_DESCRIPTION" />
+    <meta property="og:image" content="$OG_IMAGE" />
+    <meta property="twitter:image" content="$OG_IMAGE"/>
+    <meta property="twitter:card" content="summary_large_image"/>
+    <meta property="twitter:title" value="$OG_TITLE"/>
+    <meta property="twitter:description" value="$OG_DESCRIPTION"/>
+    <meta property="twitter:site" value="TivCast Radio"/>
+    <meta property="twitter:creator" value="@OpenfarmOnline"/>
+    <meta name="description" content="$OG_DESCRIPTION">
+    <meta name="keywords" content="$OG_KEYWORDS">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TivCast Radio | Songs Collection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="/theme-a/css/bootstrap.css" rel="stylesheet">
+    <link href="/theme-a/css/font-awesome.css" rel="stylesheet">
+    <link href="/theme-a/css/mediaelementplayer.css" rel="stylesheet">
+    <link href="/theme-a/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="theme-a/css/audio-amp.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.plyr.io/3.6.2/plyr.css"/>
+  <style>
+  body{
+    overflow-x: hidden;
+  }
+  .audio3{
+      background-color: #333;
+  }
+    /* Font Family
+    ================================================== */
+    
+    
+    *,::before,::after {
+    box-sizing:border-box;
+    }
+    
+    * {
+    -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color:transparent;
+    }
+    
+    
+    /* Setup
+    ================================================== */
+    
+    .column { width:inherit; }
+    
+    
+    /* Typography / Links
+    ================================================== */
+    
+    p { color:#fff; display:block; font-size:.9rem; font-weight:400; margin:0 0 2px; }
+    
+    a,a:visited { color:#8cc3e6; outline:0; text-decoration:underline; }
+    a:hover,a:focus { color:#bbdef5; }
+    p a,p a:visited { line-height:inherit; }
+    
+    
+    /* Misc.
+    ================================================== */
+    
+    .add-bottom { margin-bottom:2rem !important; }
+    .left { float:left; }
+    .right { float:right; }
+    .center { text-align:center; }
+    .hidden { display:none; }
+    
+    .no-support {
+    margin:2rem auto;
+    text-align:center;
+    width:90%;
+    }
+    
+    
+    /* Audio Player Styles
+    ================================================== */
+    
+    audio {
+    display:none;
+    }
+    
+    #audiowrap,
+    #plwrap {
+    margin:0 auto;
+    }
+    
+    #tracks {
+    font-size:0;
+    position:relative;
+    text-align:center;
+    }
+    
+    #nowPlay {
+    display:block;
+    font-size:0;
+    }
+    
+    #nowPlay span {
+    display:inline-block;
+    font-size:1.05rem;
+    vertical-align:top;
+    }
+    
+    #nowPlay span#npAction {
+    padding:21px;
+    width:30%;
+    }
+    
+    #nowPlay span#npTitle {
+    padding:21px;
+    text-align:right;
+    width:70%;
+    }
+    
+    #plList li {
+    cursor:pointer;
+    display:block;
+    margin:0;
+    padding:21px 0;
+    }
+    
+    #plList li:hover {
+    background-color:rgba(0, 0, 0, .1);
+    }
+    
+    .plItem {
+    position:relative;
+    }
+    
+    .plTitle {
+    left:50px;
+    overflow:hidden;
+    position:absolute;
+    right:65px;
+    text-overflow:ellipsis;
+    top:0;
+    white-space:nowrap;
+    }
+    
+    .plNum {
+    padding-left:21px;
+    width:25px;
+    }
+    
+    .plLength {
+    padding-left:21px;
+    position:absolute;
+    right:21px;
+    top:0;
+    }
+    
+    .plSel,
+    .plSel:hover {
+    background-color:rgba(0, 0, 0, .1);
+    color:#fff;
+    cursor:default !important;
+    }
+    
+    #tracks a {
+    border-radius:3px;
+    color:#fff;
+    cursor:pointer;
+    display:inline-block;
+    font-size:2.3rem;
+    height:40px;
+    line-height:.2;
+    margin:0 5px 30px;
+    padding:12px;
+    text-decoration:none;
+    transition:background .3s ease;
+    }
+    
+    #tracks a:hover,
+    #tracks a:active {
+    background-color:rgba(0, 0, 0, .1);
+    color:#fff;
+    }
+    
+    #tracks a::-moz-focus-inner {
+    border:0;
+    padding:0;
+    }
+    
+    
+    /* Plyr Overrides
+    ================================================== */
+    
+    .plyr--audio .plyr__controls {
+    background-color:transparent;
+    border:none;
+    color:#fff;
+    font-family:"Source Sans Pro", arial, sans-serif;
+    padding:20px 20px 20px 13px;
+    width:100%;
+    }
+    
+    a.plyr__controls__item.plyr__control:hover,
+    .plyr--audio .plyr__controls button:hover,
+    .plyr--audio .plyr__controls button.tab-focus:focus,
+    .plyr__play-large {
+    background-color:rgba(0, 0, 0, .1);
+    }
+    
+    .plyr__progress--played,
+    .plyr__volume--display {
+    color:rgba(0, 0, 0, .1);
+    }
+    
+    .plyr--audio .plyr__progress--buffer,
+    .plyr--audio .plyr__volume--display {
+    background-color:rgba(0, 0, 0, .1);
+    }
+    
+    .plyr--audio .plyr__progress--buffer {
+    color:rgba(0, 0, 0, .1);
+    }
+    
+    .plyr--full-ui input[type="range"] {
+    width:calc(100% - 39px);
+    }
+    
+    .plyr__controls .plyr__controls__item.plyr__time {
+    font-size:14px;
+    margin-left:7px;
+    }
+    
+    
+    /* Media Queries
+    ================================================== */
+    @import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900');
+    @import url('https://fonts.googleapis.com/css?family=Playball');
+    * {box-sizing: border-box;}
+    .srch_wrpr {width: 300px; max-width: 350px; height: 70px; position: relative; z-index: 1; }
+    .srch_sb_cnt {width: 70px; height: 70px; background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%); background-color: transparent; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); overflow: hidden; transition: all 0.4s ease-in-out 0s; z-index: 0; border-radius: 5px; }
+    .sech_txt_inpt {opacity: 0; height: 50px; left: 10px; border-radius: 30px; border: 0; width: 94%; padding: 0 60px 0 15px; background-color: transparent; color: #333; font-size: 15px; transition: all 0.4s ease-in-out 0s; }
+    .sech_txt_inpt:focus {letter-spacing: 2px;text-transform: uppercase;}
+    .sech_txt_inpt:focus, .srch_btn:focus {outline: none;}
+    .sech_txt_inpt, .srch_btn {position: absolute; z-index: 1; top: 50%; transform: translateY(-50%); }
+    .srch_btn {width: 70px; height: 70px; right: 0; background-image: linear-gradient(120deg, #fd602d 0%, #fd0e43 100%); background-color: transparent; border:0; transition: all 0.4s ease-in-out 0s; font-size: 26px; cursor: pointer; color: #545454; }
+    .srch_btn:after {position: absolute; content: '\f00d'; font-family: fontAwesome; top: 50%; transform: translateY(-50%) rotate(0deg); right: 10px; height: 30px; width: 30px; font-size: 28px; z-index: -1; visibility: hidden;}
+    input.checkbox {position: absolute; z-index: 1; width: 70px; height: 70px; opacity: 0.0; right: 30%; top: 50%; transform: translate(-50%, -50%); transition: all 0.4s ease-in-out 0s; cursor: pointer; }
+    input.checkbox:checked { width: 30px; height: 30px; right: -14%; transform: translate(-50%, -60%);}
+    input.checkbox:checked ~ .srch_sb_cnt {width: 100%; border-radius: 40px;background-color: #333; overflow: visible;}
+    input.checkbox:checked ~ .srch_sb_cnt .srch_btn { width: 50px; height: 50px; right: 10px; border-radius: 100%; font-size: 20px; background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%); color: #fff;text-shadow: 1px 1px 2px rgba(0,0,0,0.2);}
+    input.checkbox:checked ~ .srch_sb_cnt .sech_txt_inpt { opacity: 1; }
+    input.checkbox:checked ~ .srch_sb_cnt .srch_btn:after {transform: translateY(-50%) rotate(90deg); right: -50px; visibility: visible; transition: all .6s cubic-bezier(0.000, 0.105, 0.035, 1.570); transition-delay: 0.5s; color: white; }
+    
+    #mainwrap {
+      width: 100%;
+      background-color: #242d2e;
+      border-bottom: 1px solid;
+      border-top-left-radius: 2%;
+      border-top-right-radius: 2%;
+    }
+    .playlist{
+      width: 100%;
+      background-color: #242d2e;
+      border-bottom: 1px solid;
+    }
+    #searc_wrapper{
+       min-width: 350px;
+       margin-bottom: 20px;
+    }
+    #content {
+      overflow-x: hidden;
+    }
+    #canvas_id{
+      width: 100%;
+      height: 250px;
+      display: none;
+    }
+  </style>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+     <script>
+        window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+            t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    
+        t._e = [];
+        t.ready = function(f) {
+            t._e.push(f);
+        };
+        return t;
+        }(document, "script", "twitter-wjs"));
+      </script>
+  </head>
+  <body class="not-front page-featured">
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0&appId=1232573483468227&autoLogAppEvents=1" nonce="Mi8xDXe7"></script>
+    <div id="main">
+      <div class="header-v2">
+        <div class="container">
+          <div class="header-inner clearfix">
+            <header>
+              <div class="logo_wrapper">
+                <a href="/" class="logo">
+                  <img src="/theme-a/images/logo.png" alt="" class="img-fluid">
+                </a>
+              </div>
+            </header>
+            <ul class="social-top clearfix">
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            </ul>
+            <nav class="navbar_ navbar navbar-expand-md clearfix">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav sf-menu clearfix">
+                  <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+            
+                  <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
+                   <!-- <li class="nav-item"><a href="/channels" class="nav-link">Channels</a></li> -->
+                  <li class="nav-item sub-menu">
+                    <a href="#" class="nav-link">Media Center<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                    <div class="sf-mega">
+                      <ul>
+                        <li><a href="/songs-library">Songs Library</a></li>
+                        <li><a href="/albums">Albums</a></li>
+                        <li><a href="/nkst-church-gospel-songs-channel">NKST Gospel Songs Channel</a></li>
+                      </ul>
+                    </div>
+                  </li> 
+                  <!--<li class="nav-item"><a href="/blog" class="nav-link">Blog</a></li>-->
+                  <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="breadcrumbs1_wrapper">
+        <div class="container">
+          <div class="breadcrumbs1"><a href="/">Home</a><span><i class="fa fa-angle-right" aria-hidden="true"></i></span><a href="/albums">Albums</a><span><i class="fa fa-angle-right" aria-hidden="true"></i></span>Singer</div>
+        </div>
+      </div>
+      <div id="feature-news" class="page-section">
+        <div class="container">
+    
+          <div class="title1 singer_fullname"></div>
+    
+          <div class="title2">Listen to songs from your favorite singer or choir group</div>
+
+                <div class="feature-news2">
+                  <div class="row">
+                    <div class="col-md-4 img-col">
+                      <figure>
+                        <img id="singer_photo" alt="" class="img-fluid">
+                      </figure>
+                    </div>
+                    <div class="col-md-8 txt-col align-self-center">
+                      <div class="caption">
+                        <div class="txt1" id="singer_fullname"></div>
+                        <div class="txt2" id="singer_about"></div>
+                      </div>
+                        <div id="mainwrap">
+                            <div id="nowPlay">
+                                <span id="npAction">Paused...</span><span id="npTitle"></span>
+                            </div>
+                            <canvas id="canvas_id"></canvas>
+                            <div id="audiowrap">
+                                <div id="audio0">
+                                    <audio id="audio1" preload controls>Your browser does not support HTML5 Audio! 😢</audio>
+                                </div>
+                                <div id="tracks">
+                                    <a id="btnPrev">&larr;</a><a id="btnNext">&rarr;</a>
+                                    <dl class="row">
+                                      <dd class="col-sm-6"> 
+                                        <div class="fb-share-button"  data-layout="button_count">
+                                        </div>
+                                      </dd>
+                                      <dd class="col-sm-6">
+                                        <div>
+                                          <a class="twitter-share-button"
+                                          href="https://twitter.com/intent/tweet">Tweet</a>
+                                        </div>
+                                      </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row justify-content-center">
+                  <div class="playlist">
+                    <hr>
+                      <div id="plwrap">
+                          <ul id="plList"></ul>
+                      </div>
+                  </div>
+                  </div>
+        </div>
+      </div>
+      <div class="bot1-wrapper">
+        <div class="container">
+          <div class="bot1 clearfix">
+            <div class="logo2_wrapper">
+              <a href="/" class="logo2">
+                <img src="/theme-a/images/logo2.png" alt="" class="img-fluid">
+              </a>
+            </div>
+            <div class="social-footer-wrapper">
+              <ul class="social-footer clearfix">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              </ul>
+            </div>
+            <p>
+              <i>
+                We are building an extensive library of songs and music played in Tiv dialect for your listening pleasure.<br> We make you stream music from real live events and listen to your favorite shows from anywhere you are.
+              </i>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="bot2-wrapper">
+        <div class="container">
+          <div class="bot2 clearfix">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="contact-us-block">
+                  <figure><img src="theme-a/images/ic1.png" alt="" class="img-fluid"></figure>
+                  <div class="txt1">Km 19, Ihugh - Tse Agberagba Road, Korinya-City, Konshisha, Benue State, Nigeria</div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="contact-us-block">
+                  <figure><img src="theme-a/images/ic2.png" alt="" class="img-fluid"></figure>
+                  <div class="txt1">Phone: (234) 703 499 4623</div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="contact-us-block">
+                  <figure><img src="theme-a/images/ic3.png" alt="" class="img-fluid"></figure>
+                  <div class="txt1">Email: <a href="#">info@tivcast.com</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bot3-wrapper">
+        <div class="container">
+          <div class="bot3 clearfix">
+            <ul class="menu-bot">
+              <li><a href="/about">About</a></li>
+              <li><a href="/privacy-policy">Policy</a></li>
+              <li><a href="/contact">Contact</a></li>
+            </ul>
+            <div class="copyrights">Copyright @2021 - 2025. All rights Revierves</div>
+            <div class="created">Created with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="@" target="_blank">Ityav Systems</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="/theme-a/js/jquery.min.js"></script>
+    <script src="/theme-a/js/jquery.easing.1.3.js"></script>
+    <script src="/theme-a/js/superfish.js"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0&appId=1232573483468227&autoLogAppEvents=1" nonce="Mi8xDXe7"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/amplitudejs@5.3.0/dist/amplitude.js"></script>
+    <script src="/theme-a/js/mediaelement-and-player.js"></script>
+    <script src="/theme-a/js/mep-feature-playlist.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/foobar404/wave.js/dist/bundle.iife.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5media/1.1.8/html5media.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.min.js"></script>
+    <script src="/theme-a/js/popper.min.js"></script>
+    <script src="/theme-a/js/bootstrap.min.js"></script>
+    <script src="/theme-a/js/scripts.js"></script>
+    <script src="/theme-a/js/jquery.jplayer.min.js"></script>
+    <script src="/js/plugins/axios.min.js"></script>
+    <script src="/js/custom/Song.js"></script>
+    <script src="/js/custom/Singer.js"></script>
+    <script src="/js/custom/SingerSong.js"></script>
+
+
+    <script type="text/javascript">
+
+        (function () {
+        'use strict'
+
+        let wave = new Wave();
+          wave.fromElement("audio1","canvas_id",{type:"wave"});
+          //wave.fromFile("/thumbnails/shoptalk-clip.mp3",{type:"wave"});
+          navigator.mediaDevices.getUserMedia({
+                audio: false
+            })
+            .then(function (stream) {
+                wave.fromStream(stream, "canvas_id", {
+                  type: "shine",
+                  colors: ["blue", "white","red"]
+                });
+            })
+            .catch(function (err) {
+                console.log(err.message)
+            });
+
+            window.fbAsyncInit = function() {
+            FB.init({
+                appId            : '253469682980920',
+                autoLogAppEvents : true,
+                xfbml            : true,
+                version          : 'v9.0'
+            });
+            };
+        })();
+</script>
+
+<script>
+  jQuery(function ($) {
+      'use strict'
+      let singerSongs = []
+      async function getSingerSong(singer){
+          await SingerSong.read('https://media.tivcast.com/api/singer-songs/' + singer).then( function(response){
+            if(response.data){
+              singerSongs = response.data.songs
+            }
+          } ).catch(function(error){
+            console.log(error)
+          })
+        }
+      var supportsAudio = !!document.createElement('audio').canPlayType;
+      if (supportsAudio) {
+          // initialize plyr
+          var player = new Plyr('#audio1', {
+              controls: [
+                  'restart',
+                  'play',
+                  'progress',
+                  'current-time',
+                  'duration',
+                  'mute',
+                  'volume',
+                  'download'
+              ]
+          });
+          // initialize playlist and controls
+          var pathArray = window.location.pathname.split('/');
+          loadSongs(pathArray[2]).then(function(songs){
+          var index = 0,
+              playing = false,
+              tracks = songs,
+              mediaPath = '/public/media/audio/',
+
+              buildPlaylist = $.each(tracks, function(key, value) {
+                  var trackNumber = value.count,
+                      trackName = value.title,
+                      trackDuration = value.duration;
+                  if (trackNumber.toString().length === 1) {
+                      trackNumber = '0' + trackNumber;
+                  }
+                  $('#plList').append('<li> \
+                      <div class="plItem"> \
+                          <span class="plNum">' + trackNumber + '.</span> \
+                          <span class="plTitle">' + trackName + '</span> \
+                          <span class="plLength">' + trackDuration + '</span> \
+                      </div> \
+                  </li>');
+              }),
+              trackCount = tracks.length,
+              npAction = $('#npAction'),
+              npTitle = $('#npTitle'),
+              audio = $('#audio1').on('play', function () {
+                  playing = true;
+                  npAction.text('Now Playing...');
+                  $("#canvas_id").fadeIn("slow")
+              }).on('pause', function () {
+                  playing = false;
+                  npAction.text('Paused...');
+              }).on('ended', function () {
+                  npAction.text('Paused...');
+                  if ((index + 1) < trackCount) {
+                      index++;
+                      loadTrack(index);
+                      audio.play();
+                  } else {
+                      audio.pause();
+                      index = 0;
+                      loadTrack(index);
+                  }
+              }).get(0),
+              btnPrev = $('#btnPrev').on('click', function () {
+                  if ((index - 1) > -1) {
+                      index--;
+                      loadTrack(index);
+                      if (playing) {
+                          audio.play();
+                      }
+                  } else {
+                      audio.pause();
+                      index = 0;
+                      loadTrack(index);
+                  }
+              }),
+              btnNext = $('#btnNext').on('click', function () {
+                  if ((index + 1) < trackCount) {
+                      index++;
+                      loadTrack(index);
+                      if (playing) {
+                          audio.play();
+                      }
+                  } else {
+                      audio.pause();
+                      index = 0;
+                      loadTrack(index);
+                  }
+              }),
+              li = $('#plList li').on('click', function () {
+                  var id = parseInt($(this).index());
+                  if (id !== index) {
+                      playTrack(id);
+                  }
+              }),
+              loadTrack = function (id) {
+                 console.log("track file",tracks[id].file)
+                  $('.plSel').removeClass('plSel');
+                  $('#plList li:eq(' + id + ')').addClass('plSel');
+                  npTitle.text(tracks[id].title);
+                  index = id;
+                  audio.src = mediaPath + tracks[id].file;
+                  updateDownload(id, audio.src);
+              },
+              updateDownload = function (id, source) {
+                  player.on('loadedmetadata', function () {
+                      $('a[data-plyr="download"]').attr('href', source);
+                  });
+              },
+              playTrack = function (id) {
+                  loadTrack(id);
+                  audio.play();
+              };
+            //extension = audio.canPlayType('audio/mpeg') ? '.mp3' : audio.canPlayType('audio/ogg') ? '.ogg' : '';
+            loadTrack(index);
+          })
+
+      } else {
+          // no audio support
+          $('.column').addClass('hidden');
+          var noSupport = $('#audio1').text();
+          $('.container').append('<p class="no-support">' + noSupport + '</p>');
+      }
+      async function buildSongsList(singerSongs){
+        let songList = []
+        let count = 0
+        for( let song of singerSongs){
+          count++
+          await Song.read('https://media.tivcast.com/api/song/to/' + song).then(function(response){
+          if(response.data){
+              let song = {
+                        count: count,
+                        title: `${response.data.title}`,
+                        duration: `${response.data.duration}`,
+                        genre: `${response.data.genre}`,
+                        type: `${response.data.songType}`,
+                        file: `${response.data.url.split("/").pop()}`
+                    }
+              songList.push(song)
+          }
+        });
+        }
+        return songList
+      }
+      async function loadSongs(singer){
+        let songList = []
+        const singerDetails = await Singer.read('https://media.tivcast.com/api/singer/' + singer)
+        $("#singer_fullname").html(`<i class="fa fa-user" aria-hidden="true"></i>${singerDetails.data.fullname}`)
+        $(".singer_fullname").text(singerDetails.data.fullname)
+        $("#singer_about").text(`${singerDetails.data.about}`)
+        $("#singer_photo").attr("src",`/public/media/images/${singerDetails.data.photo}`)
+
+        const response = await SingerSong.read('https://media.tivcast.com/api/singer-songs/' + singer)
+        return  await buildSongsList(response.data.songs)
+    }
+
+  });
+  
+  </script>
+  </body>
+</html>

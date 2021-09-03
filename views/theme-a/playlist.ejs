@@ -1,0 +1,549 @@
+
+  <link href="css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://cdn.plyr.io/3.6.2/plyr.css"/>
+  <style>
+    /* Font Family
+    ================================================== */
+    
+    
+    *,::before,::after {
+    box-sizing:border-box;
+    }
+    
+    * {
+    -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color:transparent;
+    }
+    
+    
+    /* Setup
+    ================================================== */
+    
+    .column { width:inherit; }
+    
+    
+    /* Typography / Links
+    ================================================== */
+    
+    p { color:#fff; display:block; font-size:.9rem; font-weight:400; margin:0 0 2px; }
+    
+    a,a:visited { color:#8cc3e6; outline:0; text-decoration:underline; }
+    a:hover,a:focus { color:#bbdef5; }
+    p a,p a:visited { line-height:inherit; }
+    
+    
+    /* Misc.
+    ================================================== */
+    
+    .add-bottom { margin-bottom:2rem !important; }
+    .left { float:left; }
+    .right { float:right; }
+    .center { text-align:center; }
+    .hidden { display:none; }
+    
+    .no-support {
+    margin:2rem auto;
+    text-align:center;
+    width:90%;
+    }
+    
+    
+    /* Audio Player Styles
+    ================================================== */
+    
+    audio {
+    display:none;
+    }
+    
+    #audiowrap,
+    #plwrap {
+    margin:0 auto;
+    }
+    
+    #tracks {
+    font-size:0;
+    position:relative;
+    text-align:center;
+    }
+    
+    #nowPlay {
+    display:block;
+    font-size:0;
+    }
+    
+    #nowPlay span {
+    display:inline-block;
+    font-size:1.05rem;
+    vertical-align:top;
+    }
+    
+    #nowPlay span#npAction {
+    padding:21px;
+    width:30%;
+    }
+    
+    #nowPlay span#npTitle {
+    padding:21px;
+    text-align:right;
+    width:70%;
+    }
+    
+    #plList li {
+    cursor:pointer;
+    display:block;
+    margin:0;
+    padding:21px 0;
+    }
+    
+    #plList li:hover {
+    background-color:rgba(0, 0, 0, .1);
+    }
+    
+    .plItem {
+    position:relative;
+    }
+    
+    .plTitle {
+    left:50px;
+    overflow:hidden;
+    position:absolute;
+    right:65px;
+    text-overflow:ellipsis;
+    top:0;
+    white-space:nowrap;
+    }
+    
+    .plNum {
+    padding-left:21px;
+    width:25px;
+    }
+    
+    .plLength {
+    padding-left:21px;
+    position:absolute;
+    right:21px;
+    top:0;
+    }
+    
+    .plSel,
+    .plSel:hover {
+    background-color:rgba(0, 0, 0, .1);
+    color:#fff;
+    cursor:default !important;
+    }
+    
+    #tracks a {
+    border-radius:3px;
+    color:#fff;
+    cursor:pointer;
+    display:inline-block;
+    font-size:2.3rem;
+    height:40px;
+    line-height:.2;
+    margin:0 5px 30px;
+    padding:12px;
+    text-decoration:none;
+    transition:background .3s ease;
+    }
+    
+    #tracks a:hover,
+    #tracks a:active {
+    background-color:rgba(0, 0, 0, .1);
+    color:#fff;
+    }
+    
+    #tracks a::-moz-focus-inner {
+    border:0;
+    padding:0;
+    }
+    
+    
+    /* Plyr Overrides
+    ================================================== */
+    
+    .plyr--audio .plyr__controls {
+    background-color:transparent;
+    border:none;
+    color:#fff;
+    font-family:"Source Sans Pro", arial, sans-serif;
+    padding:20px 20px 20px 13px;
+    width:100%;
+    }
+    
+    a.plyr__controls__item.plyr__control:hover,
+    .plyr--audio .plyr__controls button:hover,
+    .plyr--audio .plyr__controls button.tab-focus:focus,
+    .plyr__play-large {
+    background-color:rgba(0, 0, 0, .1);
+    }
+    
+    .plyr__progress--played,
+    .plyr__volume--display {
+    color:rgba(0, 0, 0, .1);
+    }
+    
+    .plyr--audio .plyr__progress--buffer,
+    .plyr--audio .plyr__volume--display {
+    background-color:rgba(0, 0, 0, .1);
+    }
+    
+    .plyr--audio .plyr__progress--buffer {
+    color:rgba(0, 0, 0, .1);
+    }
+    
+    .plyr--full-ui input[type="range"] {
+    width:calc(100% - 39px);
+    }
+    
+    .plyr__controls .plyr__controls__item.plyr__time {
+    font-size:14px;
+    margin-left:7px;
+    }
+    
+    
+    /* Media Queries
+    ================================================== */
+    @import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900');
+    @import url('https://fonts.googleapis.com/css?family=Playball');
+    * {box-sizing: border-box;}
+    .srch_wrpr {width: 300px; max-width: 350px; height: 70px; position: relative; z-index: 1; }
+    .srch_sb_cnt {width: 70px; height: 70px; background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%); background-color: transparent; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); overflow: hidden; transition: all 0.4s ease-in-out 0s; z-index: 0; border-radius: 5px; }
+    .sech_txt_inpt {opacity: 0; height: 50px; left: 10px; border-radius: 30px; border: 0; width: 94%; padding: 0 60px 0 15px; background-color: transparent; color: #333; font-size: 15px; transition: all 0.4s ease-in-out 0s; }
+    .sech_txt_inpt:focus {letter-spacing: 2px;text-transform: uppercase;}
+    .sech_txt_inpt:focus, .srch_btn:focus {outline: none;}
+    .sech_txt_inpt, .srch_btn {position: absolute; z-index: 1; top: 50%; transform: translateY(-50%); }
+    .srch_btn {width: 70px; height: 70px; right: 0; background-image: linear-gradient(120deg, #fd602d 0%, #fd0e43 100%); background-color: transparent; border:0; transition: all 0.4s ease-in-out 0s; font-size: 26px; cursor: pointer; color: #545454; }
+    .srch_btn:after {position: absolute; content: '\f00d'; font-family: fontAwesome; top: 50%; transform: translateY(-50%) rotate(0deg); right: 10px; height: 30px; width: 30px; font-size: 28px; z-index: -1; visibility: hidden;}
+    input.checkbox {position: absolute; z-index: 1; width: 70px; height: 70px; opacity: 0.0; right: 30%; top: 50%; transform: translate(-50%, -50%); transition: all 0.4s ease-in-out 0s; cursor: pointer; }
+    input.checkbox:checked { width: 30px; height: 30px; right: -14%; transform: translate(-50%, -60%);}
+    input.checkbox:checked ~ .srch_sb_cnt {width: 100%; border-radius: 40px;background-color: #333; overflow: visible;}
+    input.checkbox:checked ~ .srch_sb_cnt .srch_btn { width: 50px; height: 50px; right: 10px; border-radius: 100%; font-size: 20px; background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%); color: #fff;text-shadow: 1px 1px 2px rgba(0,0,0,0.2);}
+    input.checkbox:checked ~ .srch_sb_cnt .sech_txt_inpt { opacity: 1; }
+    input.checkbox:checked ~ .srch_sb_cnt .srch_btn:after {transform: translateY(-50%) rotate(90deg); right: -50px; visibility: visible; transition: all .6s cubic-bezier(0.000, 0.105, 0.035, 1.570); transition-delay: 0.5s; color: white; }
+    
+    #mainwrap {
+      width: 100%;
+      background-color: #242d2e;
+      border-bottom: 1px solid;
+      border-top-left-radius: 2%;
+      border-top-right-radius: 2%;
+    }
+    .playlist{
+      width: 100%;
+      background-color: #242d2e;
+      border-bottom: 1px solid;
+    }
+    #searc_wrapper{
+       min-width: 350px;
+       margin-bottom: 20px;
+    }
+    #content {
+      overflow-x: hidden;
+    }
+    #canvas_id{
+      width: 100%;
+      height: 250px;
+      display: none;
+    }
+    </style>
+
+        <div class="container">
+          
+          <div class="title1">Tiv Songs Library</div>
+
+          <div class="title2">Can't find your favorite song?. <br><a href="/contact#content">Contact Us</a> with details of the song and we will make available</div>
+
+          <div class="row justify-content-start">
+            <div class="search-card-header" >
+              <h5 class="card-category">Search for Songs by Title and Genre</h5>
+              <main id="searc_wrapper">
+                <div class="srch_wrpr">
+                    <input type="checkbox" name="" class="checkbox" style="color: rgba(0, 0, 0, .1);">
+                    <div class="srch_sb_cnt">
+                        <input type="text" name="text_bar" class="sech_txt_inpt" id="mySearch" placeholder="Search by title, genre " onkeyup="mySearchFunction()">
+                        <button class="srch_btn">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+              </main>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div id="mainwrap">
+                <div id="nowPlay">
+                    <span id="npAction">Paused...</span><span id="npTitle"></span>
+                </div>
+                <canvas id="canvas_id"></canvas>
+                <div id="audiowrap">
+                    <div id="audio0">
+                        <audio id="audio1" preload controls>Your browser does not support HTML5 Audio! 😢</audio>
+                    </div>
+                    <div id="tracks">
+                        <a id="btnPrev">&larr;</a><a id="btnNext">&rarr;</a>
+                        <dl class="row">
+                          <dd class="col-sm-6"> 
+                            <div class="fb-share-button"  data-layout="button_count">
+                            </div>
+                          </dd>
+                          <dd class="col-sm-6">
+                            <div>
+                              <a class="twitter-share-button"
+                              href="https://twitter.com/intent/tweet">Tweet</a>
+                            </div>
+                          </dd>
+                        </dl>
+                    </div>
+                </div>
+
+            </div>
+      </div>
+        <div class="row justify-content-center">
+            <div class="playlist">
+              <hr>
+                <div id="plwrap">
+                    <ul id="plList"></ul>
+                </div>
+            </div>
+      </div>
+        </div>
+
+  <script src="js/core/jquery.min.js"></script>
+  <script src="js/plugins/axios.min.js"></script>
+  <script src="js/plugins/select2.min.js"></script>
+  <script src="js/custom/Song.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/foobar404/wave.js/dist/bundle.iife.js"></script>
+
+  <!--  Notifications Plugin    -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.min.js"></script>
+
+  <script>
+       function mySearchFunction() {
+          // Declare variables
+          var input, filter, ul, li;
+          input = document.getElementById("mySearch");
+          filter = input.value.toUpperCase();
+          ul = document.getElementById("plList");
+          li = ul.getElementsByTagName("li");
+
+          // Loop through all list items, and hide those who don't match the search query
+          for (let i = 0; i < li.length; i++) {
+            if (li[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+              li[i].style.display = "";
+            } else {
+              li[i].style.display = "none";
+            }
+          }
+      }
+  </script>
+  <script>
+  (function() {
+    'use strict';
+    let formData = null
+    let singerSongs = []
+    let songUrl = ''
+    let wave = new Wave();
+    wave.fromElement("audio1","canvas_id",{type:"wave"});
+    //wave.fromFile("/thumbnails/shoptalk-clip.mp3",{type:"wave"});
+    navigator.mediaDevices.getUserMedia({
+          audio: false
+      })
+      .then(function (stream) {
+          wave.fromStream(stream, "canvas_id", {
+            type: "shine",
+            colors: ["blue", "white","red"]
+          });
+      })
+      .catch(function (err) {
+          console.log(err.message)
+      });
+
+  function loadSpinner(el, msg){
+    $(el).prop("disabled", true);
+        // add spinner to button
+        $(el).html(
+          `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> ${msg}`
+        );
+  }
+  async function getSingers(){
+       await $('#singer').select2({
+            ajax: {
+                url: 'https://media.tivcast.com/api/singer/',
+                processResults: function (data) {
+                let types = []
+                for(var i = 0; i < data.length; i++){
+                    types.push({id: data[i].id, text: `${data[i].fullname} -> ${data[i].about}` })
+                 }
+                return {
+                    results: types
+                };
+                }
+            }
+        });
+  }
+  function resetSpinner(el, msg){
+    $("span").remove(".spinner-border");
+    $(el).text(msg);
+    $(el).prop("disabled", false);
+  }
+
+  async function getSingerSong(singer){
+      await SingerSong.read('https://media.tivcast.com/api/singer-songs/' + singer).then( function(response){
+        if(response.data){
+          singerSongs = response.data.songs
+        }
+      } ).catch(function(error){
+        console.log(error)
+      })
+    }
+
+
+  })();
+</script>
+
+<script>
+  jQuery(function ($) {
+      'use strict'
+      var supportsAudio = !!document.createElement('audio').canPlayType;
+      if (supportsAudio) {
+          // initialize plyr
+          var player = new Plyr('#audio1', {
+              controls: [
+                  'restart',
+                  'play',
+                  'progress',
+                  'current-time',
+                  'duration',
+                  'mute',
+                  'volume',
+                  'download'
+              ]
+          });
+          // initialize playlist and controls
+          loadSongs().then(function(songs){
+          var index = 0,
+              playing = false,
+              tracks = songs,
+              mediaPath = '/public/media/audio/',
+
+              buildPlaylist = $.each(tracks, function(key, value) {
+                  var trackNumber = value.count,
+                      trackName = value.title,
+                      trackDuration = value.duration;
+                  if (trackNumber.toString().length === 1) {
+                      trackNumber = '0' + trackNumber;
+                  }
+                  $('#plList').append('<li> \
+                      <div class="plItem"> \
+                          <span class="plNum">' + trackNumber + '.</span> \
+                          <span class="plTitle">' + trackName + '</span> \
+                          <span class="plLength">' + trackDuration + '</span> \
+                      </div> \
+                  </li>');
+              }),
+              trackCount = tracks.length,
+              npAction = $('#npAction'),
+              npTitle = $('#npTitle'),
+              audio = $('#audio1').on('play', function () {
+                  playing = true;
+                  npAction.text('Now Playing...');
+                  $("#canvas_id").fadeIn("slow")
+              }).on('pause', function () {
+                  playing = false;
+                  npAction.text('Paused...');
+              }).on('ended', function () {
+                  npAction.text('Paused...');
+                  if ((index + 1) < trackCount) {
+                      index++;
+                      loadTrack(index);
+                      audio.play();
+                  } else {
+                      audio.pause();
+                      index = 0;
+                      loadTrack(index);
+                  }
+              }).get(0),
+              btnPrev = $('#btnPrev').on('click', function () {
+                  if ((index - 1) > -1) {
+                      index--;
+                      loadTrack(index);
+                      if (playing) {
+                          audio.play();
+                      }
+                  } else {
+                      audio.pause();
+                      index = 0;
+                      loadTrack(index);
+                  }
+              }),
+              btnNext = $('#btnNext').on('click', function () {
+                  if ((index + 1) < trackCount) {
+                      index++;
+                      loadTrack(index);
+                      if (playing) {
+                          audio.play();
+                      }
+                  } else {
+                      audio.pause();
+                      index = 0;
+                      loadTrack(index);
+                  }
+              }),
+              li = $('#plList li').on('click', function () {
+                  var id = parseInt($(this).index());
+                  if (id !== index) {
+                      playTrack(id);
+                  }
+              }),
+              loadTrack = function (id) {
+                  $('.plSel').removeClass('plSel');
+                  $('#plList li:eq(' + id + ')').addClass('plSel');
+                  npTitle.text(tracks[id].title);
+                  index = id;
+                  audio.src = mediaPath + tracks[id].file;
+                  updateDownload(id, audio.src);
+              },
+              updateDownload = function (id, source) {
+                  player.on('loadedmetadata', function () {
+                      $('a[data-plyr="download"]').attr('href', source);
+                  });
+              },
+              playTrack = function (id) {
+                  loadTrack(id);
+                  audio.play();
+              };
+            //extension = audio.canPlayType('audio/mpeg') ? '.mp3' : audio.canPlayType('audio/ogg') ? '.ogg' : '';
+            loadTrack(index);
+          })
+
+      } else {
+          // no audio support
+          $('.column').addClass('hidden');
+          var noSupport = $('#audio1').text();
+          $('.container').append('<p class="no-support">' + noSupport + '</p>');
+      }
+      async function loadSongs(){
+      let songList = []
+
+      await Song.read('https://media.tivcast.com/api/song/').then(function(response){
+          if(response.data){
+            for(var i = 0; i < response.data.length; i++){
+              let song = {
+                        count: `${i+1}`,
+                        title: `${response.data[i].title}`,
+                        duration: `${response.data[i].duration}`,
+                        genre: `${response.data[i].genre}`,
+                        type: `${response.data[i].songType}`,
+                        file: `${response.data[i].url.split("/").pop()}`
+                    }
+              songList.push(song)
+            }
+        }
+        });
+        return songList
+    }
+
+  });
+  
+  </script>

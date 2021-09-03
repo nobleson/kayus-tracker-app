@@ -1,0 +1,49 @@
+<style>
+  .shiPlayer-inner{background: url(theme-a/images/nkstchoir.png) left top no-repeat;
+  height: 395px;
+  width: 395px;
+  }
+  * { box-sizing: border-box; }
+
+  .carousel-cell {
+  width: 80%; /* full width */
+  height: 400px;
+  background: #222;
+  /* center images in cells with flexbox */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel.is-fullscreen .carousel-cell {
+  height: 100%;
+}
+
+.carousel-cell img {
+  display: block;
+  max-height: 100%;
+}
+</style>
+<div id="welcome" class="page-section">
+    <div class="container">
+      <div class="title1">Feature Music Channels</div>
+
+      <div class="title2">Check out our featured music channels. You can stream and relay our channels.</div>
+
+        <div class="carousel" data-flickity='{ "autoPlay": true}'>
+          <div class="carousel-cell">
+            <div class="card bg-dark text-white">
+              <a href="/nkst-church-gospel-songs-channel">
+                <img src="theme-a/images/nkstchoir.png" class="card-img" alt="...">
+              </a>
+            </div>
+          </div>
+          <div class="carousel-cell">
+            <div class="card bg-dark text-white">
+              <a href="">
+                <img src="theme-a/images/catholic.png" class="card-img" alt="...">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>

@@ -1,0 +1,66 @@
+<style>
+    .streams .stream .live-label {
+        position: absolute;
+        top: 10px;
+        left: 20px;
+        background-color: red;
+        color: white;
+        padding: 1px 5px;
+    }
+    .streams .stream .stream-thumbnail img {
+        width: 100%;
+    }
+    .streams .stream .username {
+        position: absolute;
+        bottom: 10px;
+        left: 20px;
+        background-color: black;
+    }
+    .streams .stream .username a {
+        font-size: 18px;
+        color: white;
+        text-decoration: none;
+        padding: 2px 8px;
+    }
+
+    </style>
+
+    <div class="streams row" id="stream_wraper"></div>
+
+<script src="/js/core/jquery.min.js"></script>
+<script src="/js/plugins/axios.min.js"></script>
+<script src="/js/custom/LiveStreams.js"></script>
+<script>
+    async function componentDidMount(){
+        let streams = []
+        await LiveStreams.getLiveStreams().then( res => {
+            streams =  res.data
+        })
+        if (typeof (streams['live'] !== 'undefined')) {
+              await LiveStreams.getStreamsInfo(streams['live']);
+        }
+    }
+    $(document).ready(function(){
+        componentDidMount().then( ()=>{
+          const data = LiveStreams.get()
+          //console.log(JSON.stringify(liveStreams))
+          let streams = data.live_streams.map((stream, index) => {
+            return $(`<div class="stream col-xs-12 col-sm-12 col-md-3 col-lg-4">
+                    <span class="live-label">LIVE</span>
+                    <a href="/stream/${stream.username}">
+                        <div class="stream-thumbnail">
+                            <img src="/thumbnails/${stream.stream_key}.png"/>
+                        </div>
+                    </a>
+                    <span class="username">
+                        <a href="/stream/${stream.username}">
+                            ${stream.username}
+                        </a>
+                    </span>
+                </div>`);
+            });
+
+            $("#stream_wraper").html(streams)
+        })
+    })
+</script>

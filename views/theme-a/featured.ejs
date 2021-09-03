@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Featured Channel</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="theme-a/css/bootstrap.css" rel="stylesheet">
+    <link href="theme-a/css/font-awesome.css" rel="stylesheet">
+    <link href="theme-a/css/mediaelementplayer.css" rel="stylesheet">
+    <link href="theme-a/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="theme-a/css/audio-amp.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.plyr.io/3.6.2/plyr.css"/>
+  </head>
+  <body class="not-front page-featured">
+    <div id="main">
+      <div class="header-v2">
+        <div class="container">
+          <div class="header-inner clearfix">
+            <header>
+              <div class="logo_wrapper">
+                <a href="/" class="logo">
+                  <img src="theme-a/images/logo.png" alt="" class="img-fluid">
+                </a>
+              </div>
+            </header>
+            <ul class="social-top clearfix">
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            </ul>
+            <nav class="navbar_ navbar navbar-expand-md clearfix">
+              <% include theme-a-navbar.ejs%>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="breadcrumbs1_wrapper">
+        <div class="container">
+          <div class="breadcrumbs1"><a href="/">Home</a><span><i class="fa fa-angle-right" aria-hidden="true"></i></span>Featured channel</div>
+        </div>
+      </div>
+      <div id="content">
+        <div class="container">
+
+          <div class="title1">NKST Church Gospel Songs</div>
+
+          <div class="title2">Listen 24/7 and share with friends. <br><a href="/contact#content">Contact Us</a> to relay this channel to other streams.</div>
+
+          <div class="row">
+            <% include embeddedplayer.ejs%>
+          </div>
+        </div>
+      </div>
+      <% include theme-a-footer.ejs%>
+
+    </div>
+    <script src="theme-a/js/jquery.min.js"></script>
+    <script src="theme-a/js/jquery.easing.1.3.js"></script>
+    <script src="theme-a/js/superfish.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/amplitudejs@5.3.0/dist/amplitude.js"></script>
+    <script src="theme-a/js/mediaelement-and-player.js"></script>
+    <script src="theme-a/js/mep-feature-playlist.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5media/1.1.8/html5media.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.min.js"></script>
+    <script src="theme-a/js/popper.min.js"></script>
+    <script src="theme-a/js/bootstrap.min.js"></script>
+    <script src="theme-a/js/scripts.js"></script>
+    <script src="theme-a/js/jquery.jplayer.min.js"></script>
+    
+    <script type="text/javascript">
+    jQuery(function ($) {
+    'use strict'
+    var supportsAudio = !!document.createElement('audio').canPlayType;
+    if (supportsAudio) {
+        // initialize plyr
+        var player = new Plyr('#audio1', {
+            controls: [
+                'play',
+                'progress',
+                'current-time',
+                'duration',
+                'mute',
+                'volume',
+                'download'
+            ]
+        });
+        // initialize playlist and controls
+        var index = 0,
+            playing = false,
+            mediaPath = 'http://192.248.184.215:8082/radio.ogg',
+            extension = '',
+            npAction = $('#npAction'),
+            npTitle = $('#npTitle'),
+            audio = $('#audio1').on('play', function () {
+                playing = true;
+                npAction.text('Now Playing...');
+            }).on('pause', function () {
+                playing = false;
+                npAction.text('Paused...');
+            }).on('ended', function () {
+                npAction.text('Paused...');
+            }).get(0),
+            li = $('#plList li').on('click', function () {
+                audio.play();
+/*                 var id = parseInt($(this).index());
+                if (id !== index) {
+                    playTrack(id);
+                } */
+            }),
+            loadTrack = function (id) {
+/*                 $('.plSel').removeClass('plSel');
+                $('#plList li:eq(' + id + ')').addClass('plSel');
+                npTitle.text(tracks[id].name);
+                index = id; */
+                audio.src = mediaPath;
+                updateDownload(audio.src);
+            },
+            updateDownload = function (source) {
+                player.on('loadedmetadata', function () {
+                    $('a[data-plyr="download"]').attr('href', source);
+                });
+            },
+            playTrack = function (id) {
+               // loadTrack(id);
+                audio.play();
+            };
+        extension = audio.canPlayType('audio/mpeg') ? '.mp3' : audio.canPlayType('audio/ogg') ? '.ogg' : '';
+       loadTrack(index);
+    } else {
+        // no audio support
+        $('.column').addClass('hidden');
+        var noSupport = $('#audio1').text();
+        $('.container').append('<p class="no-support">' + noSupport + '</p>');
+    }
+
+
+    $(document).ready(function(){
+       $("#jquery_jplayer_1").jPlayer({
+        ready: function () {
+         $(this).jPlayer("setMedia", {
+          // m4a: "/media/mysound.mp4",
+          oga: "http://192.248.184.215:8082/radio.ogg"
+         });
+        },
+        supplied: "m4a, oga"
+       });
+      });
+
+  });
+     </script>
+  </body>
+</html>

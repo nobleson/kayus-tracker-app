@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+  <head>
+    <meta charset="UTF-8">
+    <meta property="fb:app_id" content="253469682980920" />
+    <meta property="og:url"  content="https://www.radio.tivcast.com/albums" />
+    <meta property="og:type" content="video.movie" />
+    <meta property="og:image:width" content="450"/>
+    <meta property="og:image:height" content="398"/>
+    <meta property="og:title" content="TivCast Radio | Albums - Audio collection of Tiv songs"/>
+    <meta property="og:description" content="Search for your favorite singer and listen to full collection of songs" />
+    <meta property="og:image" content="https://www.radio.tivcast.com/theme-a/images/disk.png" />
+    <meta property="twitter:image" content="https://www.radio.tivcast.com/theme-a/images/disk.png"/>
+    <meta property="twitter:card" content="summary_large_image"/>
+    <meta property="twitter:title" value="TivCast Radio | Albums - Audio collection of Tiv songs by singer or group"/>
+    <meta property="twitter:description" value="Search for your favorite singer and listen to full collection of songs"/>
+    <meta property="twitter:site" value="TivCast Radio"/>
+    <meta property="twitter:creator" value="@OpenfarmOnline"/>
+    <meta name="description" content="TivCast Radio | Albums - Audio collection of Tiv songs">
+    <meta name="keywords" content="Albums of classic and gospel songs in Tiv">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TivCast Radio | Albums - Audio collection of Tiv songs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link href="theme-a/css/bootstrap.css" rel="stylesheet">
+    <link href="theme-a/css/font-awesome.css" rel="stylesheet">
+    <link href="theme-a/css/mediaelementplayer.css" rel="stylesheet">
+    <link href="theme-a/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="theme-a/css/audio-amp.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.plyr.io/3.6.2/plyr.css"/>
+  <style>
+  body{
+    overflow-x: hidden;
+  }
+  .audio3{
+      background-color: #333;
+  }
+    
+    /* Media Queries
+    ================================================== */
+    @import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900');
+    @import url('https://fonts.googleapis.com/css?family=Playball');
+    * {box-sizing: border-box;}
+    .srch_wrpr {width: 300px; max-width: 350px; height: 70px; position: relative; z-index: 1; }
+    .srch_sb_cnt {width: 70px; height: 70px; background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%); background-color: transparent; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); overflow: hidden; transition: all 0.4s ease-in-out 0s; z-index: 0; border-radius: 5px; }
+    .sech_txt_inpt {opacity: 0; height: 50px; left: 10px; border-radius: 30px; border: 0; width: 94%; padding: 0 60px 0 15px; background-color: transparent; color: #333; font-size: 15px; transition: all 0.4s ease-in-out 0s; }
+    .sech_txt_inpt:focus {letter-spacing: 2px;text-transform: uppercase;}
+    .sech_txt_inpt:focus, .srch_btn:focus {outline: none;}
+    .sech_txt_inpt, .srch_btn {position: absolute; z-index: 1; top: 50%; transform: translateY(-50%); }
+    .srch_btn {width: 70px; height: 70px; right: 0; background-image: linear-gradient(120deg, #fd602d 0%, #fd0e43 100%); background-color: transparent; border:0; transition: all 0.4s ease-in-out 0s; font-size: 26px; cursor: pointer; color: #545454; }
+    .srch_btn:after {position: absolute; content: '\f00d'; font-family: fontAwesome; top: 50%; transform: translateY(-50%) rotate(0deg); right: 10px; height: 30px; width: 30px; font-size: 28px; z-index: -1; visibility: hidden;}
+    input.checkbox {position: absolute; z-index: 1; width: 70px; height: 70px; opacity: 0.0; right: 30%; top: 50%; transform: translate(-50%, -50%); transition: all 0.4s ease-in-out 0s; cursor: pointer; }
+    input.checkbox:checked { width: 30px; height: 30px; right: -14%; transform: translate(-50%, -60%);}
+    input.checkbox:checked ~ .srch_sb_cnt {width: 100%; border-radius: 40px;background-color: #333; overflow: visible;}
+    input.checkbox:checked ~ .srch_sb_cnt .srch_btn { width: 50px; height: 50px; right: 10px; border-radius: 100%; font-size: 20px; background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%); color: #fff;text-shadow: 1px 1px 2px rgba(0,0,0,0.2);}
+    input.checkbox:checked ~ .srch_sb_cnt .sech_txt_inpt { opacity: 1; }
+    input.checkbox:checked ~ .srch_sb_cnt .srch_btn:after {transform: translateY(-50%) rotate(90deg); right: -50px; visibility: visible; transition: all .6s cubic-bezier(0.000, 0.105, 0.035, 1.570); transition-delay: 0.5s; color: white; }
+    
+    #mainwrap {
+      width: 100%;
+      background-color: #242d2e;
+      border-bottom: 1px solid;
+      border-top-left-radius: 2%;
+      border-top-right-radius: 2%;
+    }
+    .playlist{
+      width: 100%;
+      background-color: #242d2e;
+      border-bottom: 1px solid;
+    }
+    #searc_wrapper{
+       min-width: 350px;
+       margin-bottom: 20px;
+    }
+    .search-card-header {
+      margin-bottom: 50px;
+    }
+  </style>
+  </head>
+  <body class="not-front page-featured">
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0&appId=1232573483468227&autoLogAppEvents=1" nonce="Mi8xDXe7"></script>
+    <div id="main">
+      <div class="header-v2">
+        <div class="container">
+          <div class="header-inner clearfix">
+            <header>
+              <div class="logo_wrapper">
+                <a href="/" class="logo">
+                  <img src="theme-a/images/logo.png" alt="" class="img-fluid">
+                </a>
+              </div>
+            </header>
+            <ul class="social-top clearfix">
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            </ul>
+            <nav class="navbar_ navbar navbar-expand-md clearfix">
+              <% include theme-a-navbar.ejs%>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="breadcrumbs1_wrapper">
+        <div class="container">
+          <div class="breadcrumbs1"><a href="/">Home</a><span><i class="fa fa-angle-right" aria-hidden="true"></i></span>Albums</div>
+        </div>
+      </div>
+      <div id="feature-news" class="page-section">
+        <div class="container">
+    
+          <div class="title1">Singer's Album</div>
+    
+          <div class="title2">Listen to songs from your favorite singer or choir group</div>
+          <div class="row justify-content-center">
+            <div class="search-card-header" >
+              <main id="searc_wrapper">
+                <div class="srch_wrpr">
+                    <input type="checkbox" name="" class="checkbox" style="color: rgba(0, 0, 0, .1);">
+                    <div class="srch_sb_cnt">
+                        <input type="text" name="text_bar" class="sech_txt_inpt" id="mySearch" placeholder="Search album by singer " onkeyup="mySearchFunction()">
+                        <button class="srch_btn">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+              </main>
+            </div>
+          </div>
+          <div class="row" id="singers_album_wrapper">
+
+          </div>
+        </div>
+      </div>
+      <% include theme-a-footer.ejs%>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="theme-a/js/jquery.min.js"></script>
+    <script src="theme-a/js/jquery.easing.1.3.js"></script>
+    <script src="theme-a/js/superfish.js"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0&appId=1232573483468227&autoLogAppEvents=1" nonce="Mi8xDXe7"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/amplitudejs@5.3.0/dist/amplitude.js"></script>
+    <script src="theme-a/js/mediaelement-and-player.js"></script>
+    <script src="theme-a/js/mep-feature-playlist.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5media/1.1.8/html5media.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.min.js"></script>
+    <script src="theme-a/js/popper.min.js"></script>
+    <script src="theme-a/js/bootstrap.min.js"></script>
+    <script src="theme-a/js/scripts.js"></script>
+    <script src="theme-a/js/jquery.jplayer.min.js"></script>
+    <script src="js/plugins/axios.min.js"></script>
+    <script src="js/custom/Song.js"></script>
+    <script src="js/custom/Singer.js"></script>
+    <script src="js/custom/SingerSong.js"></script>
+
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+     <script>
+        window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+            t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    
+        t._e = [];
+        t.ready = function(f) {
+            t._e.push(f);
+        };
+        return t;
+        }(document, "script", "twitter-wjs"));
+      </script>
+    <script type="text/javascript">
+
+        function mySearchFunction() {
+            // Declare variables
+            var input, filter, row, cols;
+            input = document.getElementById("mySearch");
+            filter = input.value.toUpperCase();
+            row = document.getElementById("singers_album_wrapper");
+            cols = row.getElementsByClassName("col-lg-6");
+
+            for (let i = 0; i < cols.length; i++) {
+              let singerTitle = cols[i].querySelector(".singer_fullname")
+              if (singerTitle.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                cols[i].style.display = "";
+              } else {
+                cols[i].style.display = "none";
+              }
+            }
+        }
+
+        async function getSingerDetails(id, el){
+                await Singer.read('https://media.tivcast.com/api/singer-songs/'+ id).then( function(response){
+                    if(response.data){;
+                        let audio = `<audio id="audio" preload="auto" tabindex="0" controls="" >
+                                        <source src="/public/media/audio/${response.data.songs[0]}">
+                                        Your Fallback goes here
+                                    </audio>`
+                        let $div =  $(el).find(".song-playlist")
+                        $($div).html(audio)
+                    }
+                })
+            }
+
+            async function loadSingers(){
+                await Singer.read('https://media.tivcast.com/api/singer/').then( function(response){
+                    if(response.data){
+                       for(var i = 0; i < response.data.length; i++){
+                        const albumTemplate = (`<div class="col-lg-6">
+                                                <div class="feature-news">
+                                                    <div class="row">
+                                                    <div class="col-md-8 img-col">
+                                                        <figure>
+                                                        <img src="/public/media/images/${response.data[i].photo}" alt="" class="img-fluid">
+                                                        <div class="audio3-wrapper clearfix" id="${response.data[i].id}">
+                                                           <div class="audio-block">
+                                                            <button class="btn btn-primary audio3">Start</button>
+                                                            </div>
+                                                            <div class="audio3-caption">
+                                                            <div class="txt1"><span>Playlist</span></div>
+                                                            <div class="txt2"><span>Play a full collection from singer</span></div>
+                                                            </div>
+                                                            <div class="row song-playlist"></div>
+                                                        </div>
+                                                        </figure>
+                                                    </div>
+                                                    <div class="col-md-4 txt-col">
+                                                        <div class="caption">
+                                                        <div class="txt1 singer_fullname">${response.data[i].fullname}</div>
+                                                        <div class="txt2">${response.data[i].about}</div>
+                                                        </div>
+                                                        <div class="txt3"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a> </div>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                </div>`);
+                        $("#singers_album_wrapper").append(albumTemplate)
+                       }
+                    }
+                })
+            }
+        (function () {
+        'use strict'
+        
+
+            window.fbAsyncInit = function() {
+            FB.init({
+                appId            : '253469682980920',
+                autoLogAppEvents : true,
+                xfbml            : true,
+                version          : 'v9.0'
+            });
+            };
+
+            $(document).ready(function(){
+                loadSingers()
+
+                $(document).on('click',".audio3", function(){
+                  let audioBlock = $(this).closest('.audio3-wrapper')
+                  let singerId =  $(audioBlock).prop("id")
+                  window.location.href = "/singer/" + singerId
+                 // getSingerDetails(singerId, audioBlock)
+                })
+
+            })
+
+        })();
+     </script>
+  </body>
+</html>

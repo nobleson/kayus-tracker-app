@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  
+<head>
+    <title>Featured</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="theme-a/css/bootstrap.css" rel="stylesheet">
+    <link href="theme-a/css/font-awesome.css" rel="stylesheet">
+    <link href="theme-a/css/mediaelementplayer.css" rel="stylesheet">
+    <link href="theme-a/css/style.css" rel="stylesheet">
+  </head>
+  <body class="not-front page-featured">
+    <div id="main">
+      <div class="header-v2">
+        <div class="container">
+          <div class="header-inner clearfix">
+            <header>
+              <div class="logo_wrapper">
+                <a href="/" class="logo">
+                  <img src="theme-a/images/logo.png" alt="" class="img-fluid">
+                </a>
+              </div>
+            </header>
+            <ul class="social-top clearfix">
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            </ul>
+            <nav class="navbar_ navbar navbar-expand-md clearfix">
+              <% include theme-a-navbar.ejs%>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="breadcrumbs1_wrapper">
+        <div class="container">
+          <div class="breadcrumbs1"><a href="/">Home</a><span><i class="fa fa-angle-right" aria-hidden="true"></i></span>Contact</div>
+        </div>
+      </div>
+      <div id="content">
+        <div class="container">
+
+          <div class="title1">Contact Form</div>
+
+          <div class="title2">Get in touch with us for any service you may need, we provide timely response.</div>
+
+          <div id="note"></div>
+          <div id="fields">
+            <form id="ajax-contact-form" class="form-horizontal form-dark clearfix" action="javascript:;">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group form-group-email">
+                    <label for="inputEmail">Email</label>
+                    <input type="text" class="form-control" id="inputEmail" name="email" value="" placeholder="Email *">
+                  </div>
+                  <div class="form-group form-group-name">
+                    <label for="inputName2">Name</label>
+                    <input type="text" class="form-control" id="inputName2" name="name" value="" placeholder="Name">
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <div class="form-group form-group-message">
+                    <label for="inputMessage2">Message</label>
+                    <textarea class="form-control" rows="5" id="inputMessage2" name="content" placeholder="Message *"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="text-left"><button type="submit" class="btn3">send message &nbsp; <i class="fa fa-paper-plane" aria-hidden="true"></i></button></div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+      <div id="google_map"></div>
+
+      <% include theme-a-footer.ejs%>
+    </div>
+    <script src="theme-a/js/jquery.min.js"></script>
+    <script src="theme-a/js/jquery.easing.1.3.js"></script>
+    <script src="theme-a/js/superfish.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA85u2f3GPNnJhIJeggViAfB8zMkUbCHNE"></script>
+    <script src="theme-a/js/googlemap.js"></script>
+    <script src="theme-a/js/mediaelement-and-player.js"></script>
+    <script src="theme-a/js/mep-feature-playlist.js"></script>
+
+    <script src="theme-a/js/popper.min.js"></script>
+    <script src="theme-a/js/bootstrap.min.js"></script>
+    <script src="theme-a/js/scripts.js"></script>
+
+  </body>
+</html>

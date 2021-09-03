@@ -1,0 +1,45 @@
+
+<div className="container mt-5">
+    <hr className="my-4"/>
+    <div className="col-xs-12 col-sm-12 col-md-8 col-lg-6">
+        <div className="row">
+            <h5 id="stream_key"></h5>
+        </div>
+        <div className="row">
+            <button class="btn btn-dark mt-2" id="generate">
+                Generate a new key
+            </button>
+        </div>
+    </div>
+</div>
+<script src="/js/core/jquery.min.js"></script>
+<script src="/js/plugins/axios.min.js"></script>
+<script src="/js/custom/StreamKey.js"></script>
+<script>
+
+async function generateStreamKey(){
+   await StreamKey.create()
+        .then(res => {
+            if(res.data){
+                $("#stream_key").text(res.data.stream_key)
+            }
+    })
+}
+
+async function getStreamKey(){
+   await StreamKey.read()
+        .then(res => {
+            $("#stream_key").text(res.data.stream_key)
+        })
+}
+
+$(document).ready(function(){
+
+    getStreamKey()
+
+    $("#generate").on('click', function(){
+        generateStreamKey()
+    })
+
+})
+</script>
